@@ -9,9 +9,87 @@ About: Coding and Data Collection Take-home Tech Assessment from EonLabs
 
 ---
 
+## Idea Description
+I'm using pytrends, an unofficial API, to collect the bitcoin daily trends data 
+from Google Trends. After that, I got weekly trends data by processing daily 
+trends data.
+
+## Time Spent
+I spent nearly 15 hours on this project. To be specific:
+1. Start the program (1 hour)
+   * Reading the Coding & Data Collection Take-home Tech Assessment (TTA)
+   * Take a look at Google Trends
+   * Think about the approaches I may try
+2. Initiate the project (3 hours)
+   * Create a GitHub repository for this project
+   * Use Python virtual environment in Jupyter Notebook (it takes me a while...)
+   * Try using some Python library in the Jupyter Notebook
+   * Update README.md file
+3. Try pytrends API in Jupyter Notebook (4 hours)
+   * Reading the documentation of pytrends API
+   * Try pytrends API in Jupyter Notebook
+   * Collect bitcoin daily trends data
+   * Process bitcoin daily trends data into weekly data
+   
+   You can find related file in `collect_bitcoin_trends_data_jupyter` folder
+4. Try another method (2 hours)
+   * Try to get the data by sending request using the API URL found in the 
+   network tab of Google Trends
+   
+   You can find related file in `collect_bitcoin_trends_data_jupyter` folder
+5. Write and test the Python program (2 hours)
+6. Write the README.md file (3 hours)
+
+## Methods
+When I took a look at the Google Trends in the beginning, my first idea is to 
+web-scraping the website to get the data. I changed my mind because I didn't find 
+any options to select the right start time (2015-01-01 in this case) and the correct
+resolution (daily) on the website. 
+
+Then I thought about using some existing API to collect the data. So I found pytrends.
+#### Collect the data using an unofficial API 
+The first method I tried is using an unofficial API pytrends to collect the daily 
+trends data from Google Trends. I tried to collect weekly data but it was not 
+supported by pytrends. So I processed the daily data and got the weekly data 
+using Pandas library. The weekly data is the mean value of the week.
+
+The disadvantage of using this method is that it may be interrupted in the future 
+if Google changes their backend, as it is addressed in the pytrends project description:
+>Allows simple interface for automating downloading of reports from Google Trends. Only good until Google changes their backend again :-P. When that happens feel free to contribute!
+
+At the same time, a warning message can be seen when using pytrends:
+```commandline
+/Users/hongyuan/personal_project/dev/google_trends/google_trends_venv/lib/python3.8/site-packages/pytrends/request.py:589: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+df = df.append(week_df)
+```
+It indicates that an older version of Pandas may be required in the future to 
+solve the problem.
+
+#### Collect the data by sending HTTP request with API URL
+I feel that the first method may be less reliable. So I thought about sending HTTP 
+request to the server to get the data myself. This method is similar to the first method. 
+Except that I wanted to get the API URL for getting the data myself. I looked into 
+the `Network` of the `Developer Tools` and found the API URL that Google Trends 
+was using:
+
+![Screen shot of API URL](screen_shot.png)
+
+I found that there is a token inside the URL. I tried to get the data using this 
+URL in the Jupyter Notebook and it worked. However, from my research and 
+experiment, when I changed the parameters of the URL, I got 401 unauthorized error. 
+It is possible that the token is only valid for the specific request (and maybe it will get expired). 
+This method will not work until I can find the solution to the valid API URL.
+
+## Final Method
+My final Python program is using the pytrends API, the first approach. It is the 
+method that got the work done. 
+
+But I prefer using the second approach. If I am working in a team on this project, 
+I will turn to my teammates for help. Hopefully I can get some hints for finding the valid URLs.    
 
 ## Installation (Mac)
-1. Create a virtual environment using Python 3.8: 
+1. In the Terminal, go to the project folder and create a virtual environment
+ using Python 3.8: 
    ```
    python -m venv google_trends_venv
    ```   
@@ -52,6 +130,12 @@ jupyter kernelspec list
 Uninstall the kernel `google_trends_venv`, you can type:
 ```
 jupyter kernelspec uninstall google_trends_venv
+```
+
+## Execute program
+In Terminal, go to folder `collect_bitcoin_trends_data_python_program` and run:
+```
+python collect_bitcoin_trends_data.py
 ```
 
 ## Reference:
