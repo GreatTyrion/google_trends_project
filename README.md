@@ -63,3 +63,6 @@ jupyter kernelspec uninstall google_trends_venv
 6. [converting daily stock data to weekly-based via pandas in Python](https://stackoverflow.com/questions/34597926/converting-daily-stock-data-to-weekly-based-via-pandas-in-python)
 7. [How to deal with SettingWithCopyWarning in Pandas](https://stackoverflow.com/questions/20625582/how-to-deal-with-settingwithcopywarning-in-pandas)
 8. [Origin of tokens in Google trends API call](https://stackoverflow.com/questions/42317489/origin-of-tokens-in-google-trends-api-call)
+9. [Why does Google Trends show different data for different time horizons?](https://qr.ae/pvUMig)
+10. [Why is Google Trends data inconsistent when the time frame is slightly adjusted?](https://www.quora.com/Why-is-Google-Trends-data-inconsistent-when-the-time-frame-is-slightly-adjusted)
+10. [FAQ about Google Trends data](https://support.google.com/trends/answer/4365533?visit_id=637989401016381261-1956494622&rd=1)
