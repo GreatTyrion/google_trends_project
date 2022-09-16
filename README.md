@@ -23,13 +23,13 @@ I spent nearly 15 hours on this project. To be specific:
 2. Initiate the project (3 hours)
    * Create a GitHub repository for this project
    * Use Python virtual environment in Jupyter Notebook (it takes me a while...)
-   * Try using some Python library in the Jupyter Notebook
+   * Try using some Python library in the Jupyter Notebook to test the virtual environment
    * Update README.md file
 3. Try pytrends API in Jupyter Notebook (4 hours)
    * Reading the documentation of pytrends API
    * Try pytrends API in Jupyter Notebook
    * Collect bitcoin daily trends data
-   * Process bitcoin daily trends data into weekly data
+   * Process bitcoin daily trends data to obtain weekly data
    
    You can find related file in `collect_bitcoin_trends_data_jupyter` folder
 4. Try another method (2 hours)
@@ -38,7 +38,7 @@ I spent nearly 15 hours on this project. To be specific:
    
    You can find related file in `collect_bitcoin_trends_data_jupyter` folder
 5. Write and test the Python program (2 hours)
-6. Write the README.md file (3 hours)
+6. Write the README.md file, install and test the program in a new folder (3 hours)
 
 ## Methods
 When I took a look at the Google Trends in the beginning, my first idea is to 
@@ -87,23 +87,24 @@ method that got the work done.
 But I prefer using the second approach. If I am working in a team on this project, 
 I will turn to my teammates for help. Hopefully I can get some hints for finding the valid URLs.    
 
-## Installation (Mac)
-1. In the Terminal, go to the project folder and create a virtual environment
- using Python 3.8: 
+## Installation (MacOS)
+1. In the Terminal, go to a new empty folder, conduct git clone to get project 
+repository from GitHub.
+2. In the Terminal, create a virtual environment using Python 3.8: 
    ```
    python -m venv google_trends_venv
    ```   
-2. Activate the virtual environment: 
+3. Activate the virtual environment: 
    ```
    source google_trends_venv/bin/activate
    ```   
-3. Install ipykernel which provides the IPython kernel for Jupyter: 
+4. Install ipykernel which provides the IPython kernel for Jupyter: 
    ```
    pip install ipykernel
    ```
-   Note: Skip steps 3-4 if you don't want to use Jupyter Notebook
+   Note: Skip steps 4-5 if you don't want to use Jupyter Notebook
    
-4. Add your virtual environment to Jupyter:
+5. Add the virtual environment to Jupyter:
    ```
    python -m ipykernel install --name=google_trends_venv
    ```
@@ -111,12 +112,12 @@ I will turn to my teammates for help. Hopefully I can get some hints for finding
    ```
    Installed kernelspec google_trends_venv in /usr/local/share/jupyter/kernels/google_trends_venv
    ```
-5. Go to google_trends_projects folder and intall Python libraries/packages:
+6. Go to `google_trends_project` folder and intall Python libraries/packages:
    ```
    pip install -r "requirements.txt"
    ```
 
-## Uninstallation (Mac)
+## Uninstallation (MacOS)
 #### Deactivate virtual environment
 To deactivate the Python virtual environment, you can run in Terminal: 
 ```
