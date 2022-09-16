@@ -62,3 +62,4 @@ jupyter kernelspec uninstall google_trends_venv
 5. [Access Google Trends Data without a wrapper, or with the API: Python](https://stackoverflow.com/questions/56340866/access-google-trends-data-without-a-wrapper-or-with-the-api-python)
 6. [converting daily stock data to weekly-based via pandas in Python](https://stackoverflow.com/questions/34597926/converting-daily-stock-data-to-weekly-based-via-pandas-in-python)
 7. [How to deal with SettingWithCopyWarning in Pandas](https://stackoverflow.com/questions/20625582/how-to-deal-with-settingwithcopywarning-in-pandas)
+8. [Origin of tokens in Google trends API call](https://stackoverflow.com/questions/42317489/origin-of-tokens-in-google-trends-api-call)
