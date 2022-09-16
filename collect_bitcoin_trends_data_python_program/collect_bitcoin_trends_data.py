@@ -12,12 +12,22 @@ from project_constants import GEO, COULD_NOT_GET_DATA, SUCCESSFUL_MESSAGE,\
 
 
 def collect_bitcoin_trends(
-        search_range='', start_time="2015-01-01", kw="Bitcoin"
-):
+        search_range: str = '',
+        start_time: str = "2015-01-01", kw: str = "Bitcoin"
+) -> pd.DataFrame:
+    """
+    Get bitcoin daily data by using pytrends API, remove the duplicated data,
+    and then save the data into a csv file.
+
+    :param search_range: Two letter country abbreviation
+    :param start_time: Date to start from in string, default "2015-01-01"
+    :param kw: keyword to get data for, default Bitcoin
+    :return: a pandas DataFrame object
+    """
     now = datetime.now()
     start_y, start_m, start_d = [int(item) for item in start_time.split("-")]
-    pytrends = TrendReq(hl='en-US', tz=360, timeout=(5, 7))
-    df = pytrends.get_historical_interest(
+    my_pytrends = TrendReq(hl='en-US', tz=360, timeout=(5, 7))
+    df = my_pytrends.get_historical_interest(
         [kw], year_start=start_y, month_start=start_m, day_start=start_d,
         year_end=now.year, month_end=now.month, day_end=now.day,
         geo=search_range, frequency="daily"
@@ -31,9 +41,14 @@ def collect_bitcoin_trends(
     new_df.to_csv('bitcoin_daily_trends_data.csv')
 
     return new_df
+# End collect_bitcoin_trends function
 
 
-def generate_bitcoin_weekly_trends_data(daily_data):
+def generate_bitcoin_weekly_trends_data(daily_data: pd.DataFrame) -> None:
+    """Generate a csv file of bitcoin weekly data
+
+    :param daily_data: a pandas DataFrame object
+    """
     daily_data_2 = daily_data.loc[:, ['Bitcoin']]
     daily_data_2['Date'] = pd.to_datetime(daily_data.index, format="%Y%m%d")
     logic = {
@@ -47,6 +62,7 @@ def generate_bitcoin_weekly_trends_data(daily_data):
     weekly_data['Bitcoin'] = weekly_data['Bitcoin'].map(
         lambda x: '{0:.2f}'.format(x))
     weekly_data.to_csv('bitcoin_weekly_trends_data.csv')
+# End generate_bitcoin_weekly_trends_data function
 
 
 if __name__ == "__main__":
